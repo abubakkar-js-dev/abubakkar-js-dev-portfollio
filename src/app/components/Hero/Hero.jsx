@@ -19,10 +19,12 @@ const Hero = () => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % roles.length);
     }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="container pt-[220px] lg:pt-0 mx-auto min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between gap-12 px-6 md:px-12 hero-section">
+    <section className="container pt-[220px] mb-16 md:mb-20 lg:mb-[120px] lg:pt-0 mx-auto min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between gap-12 px-6 md:px-12 hero-section">
       {/* Left Content */}
       <motion.div
         className="text-center md:text-left lg:w-2/3"
