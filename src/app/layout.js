@@ -16,7 +16,7 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: "Portpollio || Abu Bakkar Siddik",
+  title: "Portfollio || Abu Bakkar Siddik",
   description: "A portofollio website with project showcase",
 };
 
