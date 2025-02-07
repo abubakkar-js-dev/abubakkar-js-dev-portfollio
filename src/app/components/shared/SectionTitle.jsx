@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const SectionTitle = ({ title, subtitle }) => {
   return (
     <motion.div
-      className="text-center mb-10"
+      className="text-center mb-20"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}

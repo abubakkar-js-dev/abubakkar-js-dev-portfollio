@@ -24,7 +24,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="container pt-[220px] mb-16 md:mb-20 lg:mb-[120px] lg:pt-0 mx-auto min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between gap-12 px-6 md:px-12 hero-section">
+    <section id="home" className="container pt-[220px] mb-16 md:mb-20 lg:mb-[120px] lg:pt-0 mx-auto min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between gap-12 px-6 md:px-12 hero-section">
       {/* Left Content */}
       <motion.div
         className="text-center md:text-left lg:w-2/3"
@@ -33,7 +33,7 @@ const Hero = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <h1 className="text-4xl md:text-5xl font-bold text-white">
-          I am <span className="text-green-400">Abu Bakkar Siddik</span>
+        <span className="text-3xl mb-4">Hello! I’m</span><br /> <span className="text-green-400">Abu Bakkar Siddik</span>
         </h1>
         <motion.h2
           key={index}
@@ -112,10 +112,10 @@ const Hero = () => {
         whileHover={{ scale: 1.05, rotate: 2 }}
       >
         <Image
-          src="/profile.jpg"
+          src="/images/profile.jpg"
           alt="Abu Bakkar Siddik"
           fill
-          className="object-cover "
+          className="object-cover"
         />
       </motion.div>
 

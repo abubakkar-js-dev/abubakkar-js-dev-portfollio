@@ -1,10 +1,32 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [activeSection, setActiveSection] = useState("");
+  console.log(activeSection);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 } 
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
 
   return (
     <nav className="md:shadow fixed w-full z-50 bg-darkGray/5 md:backdrop-blur-sm">
@@ -16,11 +38,11 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-base">
-          {["Home", "About", "Projects", "Skills", "Contact"].map((item) => (
+          {["Home", "About", "Skills", "Projects", "Contact"].map((item) => (
             <li key={item}>
               <Link
-                href={`#${item.toLowerCase()}`}
-                className="text-white hover:text-secondary transition-all duration-300"
+                href={`/#${item.toLowerCase()}`}
+                className={`text-white px-3 py-2 hover:text-secondary transition-all duration-300 ${activeSection === item.toLowerCase() && 'bg-gray-800 rounded-full'}`}
               >
                 {item}
               </Link>
