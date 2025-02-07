@@ -1,12 +1,31 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "../ProjectCard/projectCard";
 import SectionTitle from "../shared/SectionTitle";
 
 const Projects = () => {
+    const [projects,setProjects] = useState([]);
+    const [loading,setLoading] = useState(true);
 
-    const projects = [
+    useEffect(()=>{
+      const fetchProjects = async()=>{
+        setLoading(true);
+        const res = await fetch('https://abu-bakkar-js-dev-server.vercel.app/projects');
+        const data = await res.json();
+        setProjects(data);
+        setLoading(false);
+      }
+
+      fetchProjects();
+    },[])
+
+
+    console.log(projects);
+
+
+
+    const projects2 = [
         {
           id: 1,
           name: "Eco-Adventure Blog",
@@ -47,7 +66,7 @@ const Projects = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard key={project._id} project={project} index={index} />
           ))}
         </motion.div>
       </div>

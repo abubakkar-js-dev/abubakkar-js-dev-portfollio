@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ProjectCard = ({ project, index }) => {
@@ -10,20 +11,19 @@ const ProjectCard = ({ project, index }) => {
       transition={{ duration: 0.5, delay: index * 0.2 }}
     >
       <figure>
-        <img src={project.image} alt={project.name} className="w-full h-48 object-cover" />
+        <img src={project.imageUrl} alt={project.name} className="w-full h-48 object-cover" />
       </figure>
       <div className="card-body p-6">
         <h2 className="card-title text-xl font-bold">{project.name}</h2>
         <p className="text-gray-500">{project.description}</p>
         <div className="card-actions justify-end">
-          <a
-            href={project.liveLink}
-            target="_blank"
+          <Link
+            href={`/project-details/${project._id}`}
             rel="noopener noreferrer"
             className="btn btn-primary flex items-center gap-2"
           >
             View More <FaExternalLinkAlt />
-          </a>
+          </Link>
         </div>
       </div>
     </motion.div>
