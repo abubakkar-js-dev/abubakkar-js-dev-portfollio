@@ -1,6 +1,6 @@
 # Developer Portfolio
 
-![Portfolio Screenshot](#)
+![Portfolio Screenshot](https://i.ibb.co.com/SwrDZsY8/porfollio.png)
 
 A modern developer portfolio showcasing my skills and projects. Built with **Next.js** for server-side rendering, styled with **Tailwind CSS** for a responsive design, and powered by **Node.js**, **Express**, and **MongoDB** for full-stack functionality.
 
