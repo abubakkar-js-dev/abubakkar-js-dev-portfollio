@@ -23,38 +23,6 @@ const Projects = () => {
 
     console.log(projects);
 
-
-
-    const projects2 = [
-        {
-          id: 1,
-          name: "Eco-Adventure Blog",
-          image: "https://images.unsplash.com/photo-1521334884684-d80222895322",
-          description: "A travel blogging platform showcasing eco-friendly adventures.",
-          liveLink: "https://eco-adventure.com",
-        },
-        {
-          id: 2,
-          name: "Gadget E-Commerce",
-          image: "https://cdn.dribbble.com/users/2137508/screenshots/15469398/media/1155364147969d6d1d61c79d66106e38.jpg",
-          description: "A modern e-commerce platform for the latest gadgets and accessories.",
-          liveLink: "https://gadget-store.com",
-        },
-        {
-          id: 3,
-          name: "Pet Adoption Hub",
-          image: "https://images.unsplash.com/photo-1560807707-8cc77767d783",
-          description: "A pet adoption website connecting people with rescue animals.",
-          liveLink: "https://pet-adoption.com",
-        },
-      ];
-
-
-
-      
-      
-      
-  
   return (
     <section id="projects" className="container mx-auto py-16 px-6">
       <div className="mx-auto text-center">
