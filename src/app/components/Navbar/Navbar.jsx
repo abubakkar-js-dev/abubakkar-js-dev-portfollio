@@ -69,7 +69,7 @@ const Navbar = () => {
           {["Home", "About", "Projects", "Skills", "Contact"].map((item) => (
             <li key={item}>
               <Link
-                href={`/${item.toLowerCase()}`}
+                href={`/#${item.toLowerCase()}`}
                 className="text-white hover:text-secondary transition-all duration-300"
                 onClick={() => setIsOpen(false)}
               >

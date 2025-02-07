@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '@/app/components/Navbar/Navbar';
-import { FaGlobe, FaGithub } from 'react-icons/fa'; // Import icons
+import { FaGlobe, FaGithub } from 'react-icons/fa'; 
 
 export async function getProject(id) {
     const res = await fetch(`https://abu-bakkar-js-dev-server.vercel.app/projects/${id}`);

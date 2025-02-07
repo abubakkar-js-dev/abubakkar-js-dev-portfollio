@@ -1,5 +1,6 @@
 import { Poppins,Inter } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
 
 const poppins = Poppins({

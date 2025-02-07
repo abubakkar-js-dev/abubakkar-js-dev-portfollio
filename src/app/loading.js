@@ -11,7 +11,7 @@ const loading = () => {
         transition={{ duration: 0.5 }}
       ></motion.div>
       <motion.span
-        className="absolute text-white text-lg font-semibold mt-20"
+        className="absolute text-white text-lg font-semibold mt-20 pt-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}

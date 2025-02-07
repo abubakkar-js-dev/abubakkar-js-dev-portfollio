@@ -11,7 +11,6 @@ const skills = {
     { name: "JavaScript", icon: <FaJs size={40} className="text-yellow-500" /> },
     { name: "Tailwind", icon: <img className="h-6 rounded-sm object-cover" src="/images/tailwind.png" alt="tailwind logo" /> },
     { name: "Next.js", icon: <img className="h-8 rounded-sm object-cover bg-white" src="/images/next.svg" alt="Next js logo" /> },
-    { name: "Motion", icon: <FaReact size={40} className="text-pink-500" /> },
   ],
   Backend: [
     { name: "Node.js", icon: <FaNodeJs size={40} className="text-green-500" /> },

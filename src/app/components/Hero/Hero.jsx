@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FaGithub, FaLinkedin, FaTwitter, FaFacebook } from "react-icons/fa";
 import { GrDocumentDownload } from "react-icons/gr";
 
@@ -14,13 +14,14 @@ const roles = [
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
+  const intervalRef = useRef(null); 
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % roles.length);
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalRef.current);
   }, []);
 
   return (
@@ -33,7 +34,8 @@ const Hero = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <h1 className="text-4xl md:text-5xl font-bold text-white">
-        <span className="text-3xl mb-4">Hello! I’m</span><br /> <span className="text-green-400">Abu Bakkar Siddik</span>
+          <span className="text-3xl mb-4">Hello! I’m</span><br />
+          <span className="text-green-400">Abu Bakkar Siddik</span>
         </h1>
         <motion.h2
           key={index}
@@ -47,8 +49,7 @@ const Hero = () => {
         </motion.h2>
 
         <p className="mt-4 text-gray-300 text-lg">
-          Passionate about building interactive and modern web applications.
-          Constantly learning and growing in the world of development.
+          Passionate about building interactive and modern web applications. Constantly learning and growing in the world of development.
         </p>
 
         {/* Resume Button */}
@@ -57,11 +58,10 @@ const Hero = () => {
           download
           className="inline-block mt-6 px-6 py-2 text-lg font-medium text-white bg-gradient-to-tr from-green-400 to-orange-400 rounded-lg shadow-md transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gradient-to-br"
           whileHover={{ scale: 1.05 }}
+          aria-label="Download Resume"
         >
           <p className="flex gap-2 items-center">
-            <span>
-              <GrDocumentDownload />
-            </span>
+            <GrDocumentDownload />
             <span>Download Resume</span>
           </p>
         </motion.a>
@@ -72,6 +72,7 @@ const Hero = () => {
             href="https://github.com/abubakkar-js-dev"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub Profile"
             className="text-2xl text-gray-300 hover:text-orange-300 transition-transform duration-300 hover:scale-110"
           >
             <FaGithub />
@@ -80,6 +81,7 @@ const Hero = () => {
             href="https://www.linkedin.com/in/md-abu-bakkar-siddik-024a72269/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
             className="text-2xl text-gray-300 hover:text-orange-300 transition-transform duration-300 hover:scale-110"
           >
             <FaLinkedin />
@@ -88,6 +90,7 @@ const Hero = () => {
             href="https://x.com/bakkar_md44657"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Twitter Profile"
             className="text-2xl text-gray-300 hover:text-orange-300 transition-transform duration-300 hover:scale-110"
           >
             <FaTwitter />
@@ -96,6 +99,7 @@ const Hero = () => {
             href="https://www.facebook.com/fabsc2021/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Facebook Profile"
             className="text-2xl text-gray-300 hover:text-orange-300 transition-transform duration-300 hover:scale-110"
           >
             <FaFacebook />
@@ -116,9 +120,9 @@ const Hero = () => {
           alt="Abu Bakkar Siddik"
           fill
           className="object-cover"
+          priority
         />
       </motion.div>
-
     </section>
   );
 };
