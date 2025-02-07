@@ -8,6 +8,11 @@ export async function getProject(id) {
     return data;
 }
 
+export const metadata = {
+    title: `Project Details || Portfollio || Abu Bakkar Siddik`,
+    description: "All About Project Details."
+};
+
 const ProjectDetailsPage = async ({ params }) => {
     const { id } = params;
     const project = await getProject(id);
