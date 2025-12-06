@@ -17,14 +17,19 @@ const Footer = () => {
             <p className="text-gray-400 text-sm max-w-xs">
               Building digital experiences that matter with modern technologies.
             </p>
+            <div className="flex gap-2 mt-4 justify-center md:justify-start">
+               {["React", "Next.js", "Tailwind", "Three.js"].map(tech => (
+                   <span key={tech} className="text-xs px-2 py-1 bg-white/5 rounded text-gray-500 border border-white/5">{tech}</span>
+               ))}
+            </div>
           </div>
 
           {/* Socials */}
           <div className="flex gap-4">
             {[
-              { icon: <FaGithub />, href: "https://github.com/yourusername" },
-              { icon: <FaLinkedin />, href: "https://linkedin.com/in/yourusername" },
-              { icon: <FaTwitter />, href: "https://twitter.com/yourusername" },
+              { icon: <FaGithub />, href: "https://github.com/yourusername", label: "GitHub" },
+              { icon: <FaLinkedin />, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
+              { icon: <FaTwitter />, href: "https://twitter.com/yourusername", label: "Twitter" },
             ].map((social, idx) => (
               <motion.a
                 key={idx}
@@ -33,6 +38,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ y: -3, color: "var(--primary)" }}
                 className="text-2xl text-gray-400 transition-colors"
+                aria-label={social.label}
               >
                 {social.icon}
               </motion.a>

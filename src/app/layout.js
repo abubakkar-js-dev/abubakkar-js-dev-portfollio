@@ -18,13 +18,11 @@ export const metadata = {
   title: "Abu Bakkar Siddik | Front-End Developer & UI/UX Enthusiast",
   description: "Portfolio of Abu Bakkar Siddik, a passionate React Developer building modern, scalable, and interactive web applications.",
   keywords: ["Front-End Developer", "React Developer", "Next.js", "Portfolio", "Web Development", "UI/UX"],
-  icons: {
-    icon: "/favicon.ico",
-  },
+
   openGraph: {
     title: "Abu Bakkar Siddik | Front-End Developer",
     description: "Building modern web experiences with React, Next.js, and Tailwind CSS.",
-    url: "https://your-portfolio-url.com", // User should update this
+    url: "https://abubakkar-portfolio.vercel.app",
     siteName: "Abu Bakkar Portfolio",
     images: [
       {

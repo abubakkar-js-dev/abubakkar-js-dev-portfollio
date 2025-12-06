@@ -9,7 +9,8 @@ export const projectsData = [
       githubLink: "#",
       category: "Full Stack",
       challenges: "Implementing secure role-based authentication and handling real-time financial transactions with Stripe integration.",
-      futurePlans: "Adding a mobile app version and implementing more granular task filtering options."
+      futurePlans: "Adding a mobile app version and implementing more granular task filtering options.",
+      videoUrl: "/videos/do-earn-preview.mp4" // Placeholder
     },
     {
       _id: "task-bros",
@@ -21,7 +22,8 @@ export const projectsData = [
       githubLink: "#",
        category: "Web App",
        challenges: "Managing state for complex service creation forms and ensuring fast search performance.",
-       futurePlans: "Integration with third-party booking systems and calendar sync."
+       futurePlans: "Integration with third-party booking systems and calendar sync.",
+       videoUrl: "" // No video for this one
     },
     {
       _id: "cinenest",
@@ -33,6 +35,7 @@ export const projectsData = [
       githubLink: "#",
       category: "Frontend",
       challenges: "Optimizing API calls for movie data and implementing persistent local state for favorites.",
-      futurePlans: "Adding social sharing features and user reviews."
+      futurePlans: "Adding social sharing features and user reviews.",
+      videoUrl: "" 
     }
   ];

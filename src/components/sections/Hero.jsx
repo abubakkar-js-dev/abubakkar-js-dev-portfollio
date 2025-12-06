@@ -1,9 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
+
+const ParticleBackground = dynamic(() => import("../canvas/ParticleBackground"), { ssr: false });
 
 const roles = [
   "Frontend Developer",
@@ -12,13 +15,30 @@ const roles = [
   "Problem Solver",
 ];
 
+const Typewriter = ({ text, delay = 100 }) => {
+  const [currentText, setCurrentText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setCurrentText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, delay);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, delay, text]);
+
+  return <span>{currentText}</span>;
+};
+
 const Hero = () => {
-  const [index, setIndex] = useState(0);
+  const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -27,61 +47,74 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Background Shapes */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse-slow"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-accent/20 rounded-full blur-[100px] animate-pulse-slow delay-1000"></div>
-      </div>
+      {/* 3D Background */}
+      <ParticleBackground />
 
-      <div className="container mx-auto px-6 h-full flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+      <div className="container mx-auto px-6 h-full flex flex-col-reverse lg:flex-row items-center justify-between gap-12 z-10">
         {/* Left Content */}
         <motion.div
-          className="flex-1 text-center lg:text-left z-10"
+          className="flex-1 text-center lg:text-left"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6 animate-pulse-slow"
+          >
+            <span className="w-2 h-2 rounded-full bg-primary animate-ping"></span>
             Available for Work
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold font-heading leading-tight mb-4">
-            Hello, I'm <br />
-            <span className="text-gradient">Abu Bakkar Siddik</span>
+          </motion.div>
+
+          <h1 className="text-4xl md:text-7xl font-bold font-heading leading-tight mb-6">
+            Hi, I'm <br />
+            <span className="text-gradient">Abu Bakkar</span>
           </h1>
           
-          <div className="h-8 md:h-10 overflow-hidden mb-6">
+          <div className="h-12 md:h-16 overflow-hidden mb-8">
             <motion.div
-              key={index}
-              initial={{ y: 20, opacity: 0 }}
+              key={roleIndex}
+              initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-xl md:text-2xl text-gray-400 font-medium"
+              exit={{ y: -40, opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="text-2xl md:text-3xl text-gray-300 font-medium"
             >
-              {roles[index]}
+              I build <span className="text-primary">{roles[roleIndex]}</span>
             </motion.div>
           </div>
 
-          <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            Motivated Frontend Developer specializing in React.js, Next.js, and TypeScript. 
-            I build responsive, high-performance applications with backend integration expertise 
-            in Node.js and Supabase.
+          <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
+            Crafting immersive web experiences with modern technologies. 
+            Focused on performance, accessibility, and design excellence.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
+          <div className="flex flex-col sm:flex-row gap-5 items-center justify-center lg:justify-start">
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-primary text-background rounded-full font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all flex items-center gap-2"
+            >
+              View My Work
+            </motion.a>
+            
             <motion.a
               href="https://drive.google.com/file/d/1NLzhiTPr11s6kqcTqQy4inAT-0C_NCTG/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-primary to-accent rounded-full text-white font-semibold shadow-lg shadow-primary/25 flex items-center gap-2"
+              className="px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-semibold hover:bg-white/10 transition-all flex items-center gap-2 group"
             >
-              <HiDownload className="text-xl" />
-              Download Resume
+              <HiDownload className="text-xl group-hover:translate-y-1 transition-transform" />
+              Resume
             </motion.a>
-            
-            <div className="flex gap-4 ml-0 sm:ml-4">
+          </div>
+
+          <div className="mt-12 flex gap-6 justify-center lg:justify-start">
               {[
                  { icon: <FaGithub />, href: "https://github.com/abubakkar-js-dev" },
                  { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/md-abu-bakkar-siddik-024a72269/" },
@@ -93,35 +126,56 @@ const Hero = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -5, color: "var(--primary)" }}
-                  className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-primary transition-colors"
+                  whileHover={{ y: -5, color: "#64ffda" }}
+                  className="text-2xl text-gray-400 transition-colors cursor-pointer"
                 >
                   {social.icon}
                 </motion.a>
               ))}
-            </div>
           </div>
         </motion.div>
 
-        {/* Right Content - Image */}
+        {/* Right Content - 3D/Image */}
         <motion.div
-          className="flex-1 flex justify-center lg:justify-end relative z-10"
+          className="flex-1 flex justify-center lg:justify-end relative"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary to-accent rounded-full blur-[20px] opacity-30 animate-pulse"></div>
-            <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden border-4 border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500">
-              <Image
-                src="/images/profile.jpg"
-                alt="Abu Bakkar Siddik"
-                fill
-                sizes="(max-width: 768px) 300px, 400px"
-                className="object-cover"
-                priority
-              />
+          <div className="relative w-80 h-80 md:w-[500px] md:h-[500px]">
+            {/* Animated Blob/Shape Background */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-accent/30 rounded-full blur-[80px] animate-pulse-slow"></div>
+            
+            <div className="relative w-full h-full glass-card p-4 rotate-3 hover:rotate-0 transition-all duration-700">
+               <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl">
+                <Image
+                    src="/images/profile.jpg"
+                    alt="Abu Bakkar Siddik"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                    priority
+                />
+               </div>
             </div>
+
+            {/* Floating Tech Badges */}
+            <motion.div 
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -right-8 top-20 glass p-3 rounded-xl hidden md:block"
+            >
+                <img src="/images/react.png" alt="React" className="w-10 h-10" onError={(e) => e.target.style.display = 'none'} />
+            </motion.div>
+            
+            <motion.div 
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -left-8 bottom-20 glass p-3 rounded-xl hidden md:block"
+            >
+                <img src="/images/next.svg" alt="Next.js" className="w-10 h-10 invert" onError={(e) => e.target.style.display = 'none'} />
+            </motion.div>
+
           </div>
         </motion.div>
       </div>

@@ -46,17 +46,17 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "glass border-none shadow-lg py-3" : "bg-transparent py-5"
+        scrolled ? "bg-secondary/70 backdrop-blur-md shadow-xl py-3 border-b border-white/5" : "bg-transparent py-5"
       }`}
     >
-      <div className="container mx-auto flex justify-between items-center px-6">
+      <div className="container mx-auto flex justify-between items-center px-6 relative z-50">
         {/* Logo */}
         <Link href="/" className="group">
           <h2 className="text-2xl font-bold font-heading">
             Bakka<span className="text-primary group-hover:text-accent transition-colors">R</span>
           </h2>
         </Link>
-
+        
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 items-center">
           {navLinks.map((item) => (
@@ -154,12 +154,7 @@ const Navbar = () => {
               </motion.li>
             </motion.ul>
             
-             <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white"
-            >
-              <FiX />
-            </button>
+
           </motion.div>
         )}
       </AnimatePresence>
