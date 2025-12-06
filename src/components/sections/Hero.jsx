@@ -117,6 +117,7 @@ const Hero = () => {
                 src="/images/profile.jpg"
                 alt="Abu Bakkar Siddik"
                 fill
+                sizes="(max-width: 768px) 300px, 400px"
                 className="object-cover"
                 priority
               />

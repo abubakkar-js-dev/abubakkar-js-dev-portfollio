@@ -101,33 +101,65 @@ const Navbar = () => {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-white/10 overflow-hidden"
+            className="md:hidden fixed inset-0 glass z-40 flex flex-col justify-center items-center"
           >
-            <ul className="flex flex-col items-center gap-6 py-8">
+            <motion.ul 
+              className="flex flex-col items-center gap-8"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    delayChildren: 0.1,
+                    staggerChildren: 0.1
+                  }
+                }
+              }}
+            >
               {navLinks.map((item) => (
-                <li key={item.name}>
+                <motion.li 
+                  key={item.name}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                >
                   <Link
                     href={item.href}
-                    className="text-lg text-gray-300 hover:text-primary transition-colors"
+                    className="text-2xl font-medium text-gray-300 hover:text-primary transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
                   </Link>
-                </li>
+                </motion.li>
               ))}
-              <li>
+              <motion.li
+                variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 }
+                }}
+              >
                 <a
                   href="https://drive.google.com/file/d/1NLzhiTPr11s6kqcTqQy4inAT-0C_NCTG/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2 bg-gradient-to-r from-primary to-accent rounded-full text-white font-medium shadow-lg shadow-primary/20 block text-center"
+                  className="px-8 py-3 bg-gradient-to-r from-primary to-accent rounded-full text-white font-bold shadow-lg shadow-primary/20 block text-center"
                 >
                   Resume
                 </a>
-              </li>
-            </ul>
+              </motion.li>
+            </motion.ul>
+            
+             <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white"
+            >
+              <FiX />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

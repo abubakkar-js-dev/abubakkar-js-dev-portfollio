@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 
@@ -10,14 +11,16 @@ const ProjectCard = ({ project, index }) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className="group bg-secondary/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 flex flex-col h-full"
+      className="group glass-card overflow-hidden card-hover flex flex-col h-full"
     >
       {/* Image Container */}
-      <div className="relative overflow-hidden h-52">
-        <img 
+      <div className="relative overflow-hidden h-52 w-full">
+        <Image 
             src={project.imageUrl || "/images/placeholder.jpg"} 
             alt={project.name} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-110" 
         />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-60"></div>
         

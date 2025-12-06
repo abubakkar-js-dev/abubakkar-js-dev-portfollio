@@ -81,7 +81,7 @@ const Contact = () => {
                     <input
                         type="text"
                         placeholder="John Doe"
-                        className="w-full p-3 rounded-lg bg-darkBlue/50 text-white border border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        className="w-full p-3 rounded-lg bg-darkBlue/50 text-white border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all placeholder:text-gray-600"
                         required
                     />
                 </div>
@@ -90,7 +90,7 @@ const Contact = () => {
                      <input
                         type="email"
                         placeholder="john@example.com"
-                        className="w-full p-3 rounded-lg bg-darkBlue/50 text-white border border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        className="w-full p-3 rounded-lg bg-darkBlue/50 text-white border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all placeholder:text-gray-600"
                         required
                     />
                 </div>
@@ -101,7 +101,7 @@ const Contact = () => {
                  <input
                     type="text"
                     placeholder="Project Inquiry"
-                    className="w-full p-3 rounded-lg bg-darkBlue/50 text-white border border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    className="w-full p-3 rounded-lg bg-darkBlue/50 text-white border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all placeholder:text-gray-600"
                     required
                 />
               </div>
@@ -111,7 +111,7 @@ const Contact = () => {
                 <textarea
                     placeholder="Tell me about your project..."
                     rows="5"
-                    className="w-full p-3 rounded-lg bg-darkBlue/50 text-white border border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+                    className="w-full p-3 rounded-lg bg-darkBlue/50 text-white border border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none placeholder:text-gray-600"
                     required
                 ></textarea>
               </div>

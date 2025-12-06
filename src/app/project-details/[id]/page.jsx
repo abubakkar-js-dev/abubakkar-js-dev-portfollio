@@ -1,5 +1,6 @@
-import Navbar from '@/app/components/Navbar/Navbar';
+import Navbar from '@/components/layout/Navbar';
 import * as motion from "framer-motion/client";
+import Image from "next/image";
 import Link from 'next/link';
 import { FaArrowLeft, FaGithub, FaGlobe, FaLayerGroup, FaLightbulb, FaRocket, FaTools } from 'react-icons/fa';
 
@@ -96,10 +97,13 @@ const ProjectDetailsPage = async ({ params }) => {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="relative w-full h-[300px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 mb-16 group"
                 >
-                    <img 
+                    <Image 
                         src={project.imageUrl} 
                         alt={project.name} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                        fill
+                        priority
+                        className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                        sizes="(max-width: 768px) 100vw, 1200px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
                 </motion.div>

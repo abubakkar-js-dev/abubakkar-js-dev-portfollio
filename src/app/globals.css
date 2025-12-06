@@ -21,19 +21,23 @@
 
 @layer base {
   body {
-    @apply bg-[var(--background)] text-[var(--foreground)] antialiased scroll-smooth;
+    @apply bg-[var(--background)] text-[var(--foreground)] antialiased scroll-smooth text-base leading-relaxed;
     font-family: var(--font-inter);
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-poppins);
-    @apply font-bold tracking-tight;
+    @apply font-bold tracking-tight text-white;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-[var(--card-bg)] backdrop-blur-md border border-[var(--card-border)];
+    @apply bg-[rgba(30,41,59,0.7)] backdrop-blur-lg border border-[rgba(255,255,255,0.08)];
+  }
+  
+  .glass-card {
+     @apply bg-[rgba(30,41,59,0.4)] backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-2xl;
   }
   
   .text-gradient {
@@ -41,7 +45,13 @@
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl hover:shadow-[var(--primary)]/10;
+    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  
+  .card-hover:hover {
+     box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.1), 0 8px 10px -6px rgba(56, 189, 248, 0.1);
+     border-color: rgba(56, 189, 248, 0.3);
   }
 }
 

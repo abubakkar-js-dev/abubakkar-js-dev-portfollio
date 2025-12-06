@@ -21,6 +21,27 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  openGraph: {
+    title: "Abu Bakkar Siddik | Front-End Developer",
+    description: "Building modern web experiences with React, Next.js, and Tailwind CSS.",
+    url: "https://your-portfolio-url.com", // User should update this
+    siteName: "Abu Bakkar Portfolio",
+    images: [
+      {
+        url: "/images/profile.jpg", // Assuming profile image as OG image
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abu Bakkar Siddik | Front-End Developer",
+    description: "Building modern web experiences with React, Next.js, and Tailwind CSS.",
+    images: ["/images/profile.jpg"],
+  },
 };
 
 export default function RootLayout({ children }) {

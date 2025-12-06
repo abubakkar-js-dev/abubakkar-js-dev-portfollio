@@ -1,10 +1,10 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import ProjectCard from "../ProjectCard/projectCard";
 import SectionTitle from "../shared/SectionTitle";
+import ProjectCard from "../ui/ProjectCard";
 
-import { projectsData } from "../../data/projects";
+import { projectsData } from "@/app/data/projects";
 
 const Projects = () => {
     // eslint-disable-next-line no-unused-vars
