@@ -9,10 +9,10 @@ import { HiDownload } from "react-icons/hi";
 const ParticleBackground = dynamic(() => import("../canvas/ParticleBackground"), { ssr: false });
 
 const roles = [
-  "Frontend Developer",
-  "React & Next.js Specialist",
-  "Full Stack Developer (MERN)",
-  "Problem Solver",
+  "Modern Frontend Experiences",
+  "React & Next.js Web Applications",
+  "Full-Stack MERN Platforms",
+  "Scalable Digital Solutions",
 ];
 
 const Typewriter = ({ text, delay = 100 }) => {
