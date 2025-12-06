@@ -1,17 +1,20 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  console.log(activeSection);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
     const sections = document.querySelectorAll("section");
-    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -20,65 +23,106 @@ const Navbar = () => {
           }
         });
       },
-      { threshold: 0.5 } 
+      { threshold: 0.5 }
     );
 
     sections.forEach((section) => observer.observe(section));
+    window.addEventListener("scroll", handleScroll);
 
-    return () => sections.forEach((section) => observer.unobserve(section));
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      sections.forEach((section) => observer.unobserve(section));
+    };
   }, []);
 
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
-    <nav className="md:shadow fixed w-full z-50 bg-darkGray/5 md:backdrop-blur-sm">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled ? "glass shadow-lg py-3" : "bg-transparent py-5"
+      }`}
+    >
+      <div className="container mx-auto flex justify-between items-center px-6">
         {/* Logo */}
-        <h2 className="text-3xl font-medium bg-gradient-to-l from-orange-400 via-green-300 to-white bg-clip-text text-transparent">
-          Bakka R
-        </h2>
+        <Link href="/" className="group">
+          <h2 className="text-2xl font-bold font-heading">
+            Bakka<span className="text-primary group-hover:text-accent transition-colors">R</span>
+          </h2>
+        </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 text-base">
-          {["Home", "About", "Skills", "Projects", "Contact"].map((item) => (
-            <li key={item}>
+        <ul className="hidden md:flex gap-8 items-center">
+          {navLinks.map((item) => (
+            <li key={item.name}>
               <Link
-                href={`/#${item.toLowerCase()}`}
-                className={`text-white px-3 py-2 hover:text-secondary transition-all duration-300 ${activeSection === item.toLowerCase() && 'bg-gray-800 rounded-full'}`}
+                href={item.href}
+                className={`text-sm font-medium transition-all duration-300 relative group ${
+                  activeSection === item.href.substring(1)
+                    ? "text-primary"
+                    : "text-gray-300 hover:text-white"
+                }`}
               >
-                {item}
+                {item.name}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === item.href.substring(1) ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>
             </li>
           ))}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-5 py-2 bg-primary/10 border border-primary/20 text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-sm font-medium"
+          >
+            Resume
+          </motion.button>
         </ul>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-2xl text-white transition-all duration-300"
+          className="md:hidden text-2xl text-white hover:text-primary transition-colors duration-300"
+          aria-label="Toggle Menu"
         >
           {isOpen ? <FiX /> : <FiMenu />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden bg-darkGray/5 backdrop-blur-sm absolute top-16 left-0 w-full shadow-lg overflow-hidden transition-all duration-500 ease-in-out ${
-          isOpen ? "max-h-96" : "max-h-0"
-        }`}
-      >
-        <ul className="flex flex-col items-center gap-4 py-6 text-lg">
-          {["Home", "About", "Projects", "Skills", "Contact"].map((item) => (
-            <li key={item}>
-              <Link
-                href={`/#${item.toLowerCase()}`}
-                className="text-white hover:text-secondary transition-all duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass border-t border-white/10 overflow-hidden"
+          >
+            <ul className="flex flex-col items-center gap-6 py-8">
+              {navLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-lg text-gray-300 hover:text-primary transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <button className="px-6 py-2 bg-gradient-to-r from-primary to-accent rounded-full text-white font-medium shadow-lg shadow-primary/20">
+                  Resume
+                </button>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

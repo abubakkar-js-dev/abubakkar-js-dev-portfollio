@@ -1,71 +1,83 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import SectionTitle from "../shared/SectionTitle";
 
 const About = () => {
   return (
-    <section id="about" className="container mx-auto px-6 md:px-12 mb-16 md:mb-20 lg:mb-[120px]">
-      {/* Section Title */}
-      <SectionTitle
-        title="About Me"
-        subtitle="Passionate developer crafting seamless digital experiences."
-      />
+    <section id="about" className="py-20 bg-secondary/10">
+      <div className="container mx-auto px-6">
+        <SectionTitle
+          title="About Me"
+          subtitle="Passionate developer crafting seamless digital experiences."
+        />
 
-      {/* About Content */}
-      <motion.div
-        className="flex flex-col lg:flex-row items-center gap-10 mt-10"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {/* Left Side - Text Content */}
-        <div className="flex-1 text-gray-300 text-lg leading-relaxed">
-          <p>
-            Hey there! 👋 I’m{" "}
-            <span className="text-green-400 font-semibold">
-              Abu Bakkar Siddik
-            </span>
-            , a passionate <strong>Front-End Developer</strong> and an{" "}
-            <strong>Aspiring Full-Stack Engineer</strong> dedicated to crafting
-            high-performance, user-centric web applications. My journey into web
-            development began with curiosity and has evolved into a deep passion
-            for building seamless digital experiences.
-          </p>
+        <div className="flex flex-col lg:flex-row items-center gap-16 mt-16">
+          {/* Left Side - Image */}
+          <motion.div
+            className="w-full lg:w-5/12 relative group"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+             <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-xl opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/about.jpg"
+                alt="About Me"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            
+            {/* Experience Badge */}
+            <div className="absolute -bottom-6 -right-6 bg-secondary border border-white/10 p-6 rounded-xl shadow-xl backdrop-blur-md">
+                <p className="text-4xl font-bold text-primary">2+</p>
+                <p className="text-sm text-gray-400 mt-1">Years of<br/>Experience</p>
+            </div>
+          </motion.div>
 
-          <p className="mt-4">
-            I specialize in modern web technologies like{" "}
-            <strong>React.js, Next.js, and the MERN stack</strong>, focusing on{" "}
-            <strong>scalability, performance, and intuitive UI/UX</strong>. I
-            thrive on solving complex problems, optimizing workflows, and
-            continuously expanding my knowledge to stay ahead in this
-            ever-evolving tech landscape.
-          </p>
+          {/* Right Side - Content */}
+          <motion.div
+            className="w-full lg:w-7/12"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h3 className="text-2xl md:text-3xl font-bold mb-6">
+              Crafting stories through <span className="text-gradient">code and design</span>
+            </h3>
+            
+            <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+              <p>
+                Hey there! 👋 I’m <span className="text-white font-semibold">Abu Bakkar Siddik</span>, 
+                a passionate <strong>Front-End Developer</strong> and aspiring <strong>Full-Stack Engineer</strong>. 
+                My journey began with curiosity and has evolved into a deep passion for building pixel-perfect, 
+                high-performance web applications.
+              </p>
+              
+              <p>
+                I specialize in the <span className="text-primary">MERN stack</span> (MongoDB, Express, React, Node.js) 
+                and Next.js. I thrive on solving complex UI challenges and optimizing performance to deliver 
+                buttery-smooth user experiences.
+              </p>
 
-          <p className="mt-4">
-            Beyond coding, I enjoy <strong>designing in Figma</strong>,{" "}
-            <strong>exploring AI innovations</strong>, and{" "}
-            <strong>analyzing market trends in trading</strong>. I believe in{" "}
-            <strong>continuous learning, creativity, and innovation</strong>
-            —building solutions that not only function well but also leave a
-            lasting impact. 🚀
-          </p>
+              <div className="grid grid-cols-2 gap-6 mt-8">
+                 <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-primary/30 transition-colors">
+                    <h4 className="font-bold text-white mb-2">Frontend</h4>
+                    <p className="text-sm text-gray-400">React, Next.js, Tailwind</p>
+                 </div>
+                 <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-primary/30 transition-colors">
+                    <h4 className="font-bold text-white mb-2">Backend</h4>
+                    <p className="text-sm text-gray-400">Node, Express, MongoDB</p>
+                 </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
-
-        {/* Right Side - Optional Image or Animation */}
-        <motion.div
-          className="flex-1 flex justify-center items-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-        >
-          <img
-            src="/images/about.jpg"
-            alt="About Me"
-            className="w-80 h-80 object-cover rounded-lg shadow-lg border-2 border-orange-500"
-          />
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };
