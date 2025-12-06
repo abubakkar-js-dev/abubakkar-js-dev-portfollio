@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { FaArrowLeft, FaGithub, FaGlobe, FaLayerGroup, FaLightbulb, FaRocket, FaTools } from 'react-icons/fa';
 
-import { projectsData } from '@/app/data/projects';
+import { projectsData } from '@/data/projects';
 
 export async function getProject(id) {
     // Check local data first

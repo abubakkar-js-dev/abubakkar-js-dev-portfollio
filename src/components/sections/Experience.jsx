@@ -1,5 +1,5 @@
 "use client";
-import { educationData, experienceData } from "@/app/data/experience";
+import { educationData, experienceData } from "@/data/experience";
 import { motion } from "framer-motion";
 import { FaBriefcase, FaGraduationCap } from "react-icons/fa";
 import SectionTitle from "../shared/SectionTitle";
