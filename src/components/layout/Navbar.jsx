@@ -1,13 +1,13 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FiDownload, FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -36,129 +36,267 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/#home" },
-    { name: "About", href: "/#about" },
-    { name: "Skills", href: "/#skills" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
   ];
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-secondary/70 backdrop-blur-md shadow-xl py-3" : "bg-transparent py-5"
-      }`}
-    >
-      <div className="container mx-auto flex justify-between items-center px-6 relative z-50">
-        {/* Logo */}
-        <Link href="/" className="group">
-          <h2 className="text-2xl font-bold font-heading">
-            Bakka<span className="text-primary group-hover:text-accent transition-colors">R</span>
-          </h2>
-        </Link>
-        
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 items-center">
-          {navLinks.map((item) => (
-            <li key={item.name}>
-              <Link
-                href={item.href}
-                className={`text-sm font-medium transition-all duration-300 relative group ${
-                  activeSection === item.href.substring(2)
-                    ? "text-primary"
-                    : "text-gray-300 hover:text-white"
-                }`}
-              >
-                {item.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === item.href.substring(2) ? "w-full" : "w-0 group-hover:w-full"}`}></span>
-              </Link>
-            </li>
-          ))}
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-slate-900/80 backdrop-blur-xl shadow-lg"
+            : "bg-transparent py-2"
+        }`}
+      >
+        <div className="container mx-auto flex justify-between items-center px-6 py-4">
+          {/* Logo */}
           <motion.a
-            href="https://drive.google.com/file/d/1NLzhiTPr11s6kqcTqQy4inAT-0C_NCTG/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#home"
+            onClick={(e) => handleNavClick(e, "#home")}
+            className="group relative"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-5 py-2 bg-primary/10 border border-primary/20 text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-sm font-medium cursor-pointer"
           >
-            Resume
+            <h2 className="text-2xl font-bold relative z-10">
+              Bakka
+              <span className="text-teal-400 group-hover:text-cyan-400 transition-colors">
+                R
+              </span>
+            </h2>
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-teal-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity -z-10"></div>
           </motion.a>
-        </ul>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-2xl text-white hover:text-primary transition-colors duration-300"
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <FiX /> : <FiMenu />}
-        </button>
-      </div>
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center gap-8">
+            <ul className="flex gap-8 items-center">
+              {navLinks.map((item) => {
+                const isActive = activeSection === item.href.substring(1);
+                return (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      onClick={(e) => handleNavClick(e, item.href)}
+                      className={`relative text-sm font-medium transition-colors duration-300 group ${
+                        isActive ? "text-teal-400" : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      {item.name}
+                      <span
+                        className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-teal-400 to-cyan-500 transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      ></span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* Social Icons */}
+            <div className="flex gap-3 items-center border-l border-slate-700 pl-6">
+              <motion.a
+                href="https://github.com/abubakkar-js-dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -2, scale: 1.1 }}
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="GitHub"
+              >
+                <FaGithub size={18} />
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/md-abu-bakkar-siddik-024a72269/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -2, scale: 1.1 }}
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin size={18} />
+              </motion.a>
+            </div>
+
+            {/* Resume Button */}
+            <motion.a
+              href="https://drive.google.com/file/d/1NLzhiTPr11s6kqcTqQy4inAT-0C_NCTG/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative px-5 py-2.5 bg-gradient-to-r from-teal-400 to-cyan-500 text-slate-900 rounded-full font-semibold text-sm overflow-hidden group"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <FiDownload className="group-hover:animate-bounce" />
+                Resume
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </motion.a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <motion.button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden text-2xl text-white hover:text-teal-400 transition-colors relative z-50"
+            aria-label="Toggle Menu"
+            whileTap={{ scale: 0.9 }}
+          >
+            <AnimatePresence mode="wait">
+              {isOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FiX />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FiMenu />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        </div>
+      </motion.nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden fixed inset-0 glass z-40 flex flex-col justify-center items-center"
-          >
-            <motion.ul 
-              className="flex flex-col items-center gap-8"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    delayChildren: 0.1,
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-40 lg:hidden"
+            />
+
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 20 }}
+              className="fixed right-0 top-0 bottom-0 w-80 bg-slate-900 border-l border-slate-800 z-40 lg:hidden overflow-y-auto"
             >
-              {navLinks.map((item) => (
-                <motion.li 
-                  key={item.name}
+              <div className="p-8 pt-24">
+                {/* Mobile Nav Links */}
+                <motion.ul
+                  className="space-y-6 mb-8"
+                  initial="hidden"
+                  animate="visible"
                   variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 }
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        delayChildren: 0.2,
+                        staggerChildren: 0.1,
+                      },
+                    },
                   }}
                 >
-                  <Link
-                    href={item.href}
-                    className="text-2xl font-medium text-gray-300 hover:text-primary transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </motion.li>
-              ))}
-              <motion.li
-                variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0 }
-                }}
-              >
-                <a
+                  {navLinks.map((item) => {
+                    const isActive = activeSection === item.href.substring(1);
+                    return (
+                      <motion.li
+                        key={item.name}
+                        variants={{
+                          hidden: { x: 50, opacity: 0 },
+                          visible: { x: 0, opacity: 1 },
+                        }}
+                      >
+                        <a
+                          href={item.href}
+                          onClick={(e) => handleNavClick(e, item.href)}
+                          className={`text-2xl font-semibold block py-2 transition-colors ${
+                            isActive
+                              ? "text-teal-400"
+                              : "text-gray-300 hover:text-white"
+                          }`}
+                        >
+                          {item.name}
+                        </a>
+                      </motion.li>
+                    );
+                  })}
+                </motion.ul>
+
+                {/* Mobile Resume Button */}
+                <motion.a
                   href="https://drive.google.com/file/d/1NLzhiTPr11s6kqcTqQy4inAT-0C_NCTG/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 bg-gradient-to-r from-primary to-accent rounded-full text-white font-bold shadow-lg shadow-primary/20 block text-center"
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                  className="block w-full px-6 py-4 bg-gradient-to-r from-teal-400 to-cyan-500 text-slate-900 rounded-xl font-bold text-center shadow-lg shadow-teal-400/30"
                 >
-                  Resume
-                </a>
-              </motion.li>
-            </motion.ul>
-            
+                  <span className="flex items-center justify-center gap-2">
+                    <FiDownload />
+                    Download Resume
+                  </span>
+                </motion.a>
 
-          </motion.div>
+                {/* Mobile Social Links */}
+                <motion.div
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="mt-8 pt-8 border-t border-slate-800"
+                >
+                  <p className="text-gray-500 text-sm mb-4">Follow Me</p>
+                  <div className="flex gap-4">
+                    <a
+                      href="https://github.com/abubakkar-js-dev"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-slate-700 transition-all"
+                    >
+                      <FaGithub size={20} />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/md-abu-bakkar-siddik-024a72269/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-gray-400 hover:text-blue-400 hover:bg-slate-700 transition-all"
+                    >
+                      <FaLinkedin size={20} />
+                    </a>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 
