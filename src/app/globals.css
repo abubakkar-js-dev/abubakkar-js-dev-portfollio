@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 :root {
-  /* Portfolio 3.0 Theme Palette */
-  --background: #0a192f; /* Deep Navy */
-  --foreground: #ccd6f6; /* Light Slate */
+  /* Portfolio 3.0 Theme Palette - Refined Professional */
+  --background: #0f172a; /* Slate 900 - Deep & Modern */
+  --foreground: #e2e8f0; /* Slate 200 - High legibility */
   
-  --primary: #64ffda; /* Cyan Highlight */
-  --primary-hover: #4cdbb9; /* Slightly darker Cyan */
+  --primary: #2dd4bf; /* Teal 400 - Fresh, professional, energetic */
+  --primary-hover: #14b8a6; /* Teal 500 */
   
-  --secondary: #112240; /* Lightest Navy */
-  --secondary-hover: #233554; /* Light Navy */
+  --secondary: #1e293b; /* Slate 800 - Contrast component bg */
+  --secondary-hover: #334155; /* Slate 700 */
   
-  --accent: #8892b0; /* Slate */
+  --accent: #94a3b8; /* Slate 400 - Subtle details */
   
-  --card-bg: rgba(17, 34, 64, 0.75); /* Secondary with blur opacity */
-  --card-border: rgba(100, 255, 218, 0.1); /* Subtle Cyan border */
+  --card-bg: rgba(30, 41, 59, 0.7); /* Glass effect base */
+  --card-border: rgba(45, 212, 191, 0.15); /* Subtle primary border */
   
   --font-inter: "Inter", sans-serif;
   --font-calibre: "Calibre", "Inter", "San Francisco", "SF Pro Text", -apple-system, system-ui, sans-serif;

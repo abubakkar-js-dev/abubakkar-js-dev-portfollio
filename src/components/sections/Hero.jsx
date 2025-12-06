@@ -149,7 +149,7 @@ const Hero = () => {
             <div className="relative w-full h-full glass-card p-4 rotate-3 hover:rotate-0 transition-all duration-700">
                <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl">
                 <Image
-                    src="/images/profile.jpg"
+                    src="/images/banner.jpg"
                     alt="Abu Bakkar Siddik"
                     fill
                     sizes="(max-width: 768px) 100vw, 500px"
