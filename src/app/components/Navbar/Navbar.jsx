@@ -36,11 +36,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#home" },
+    { name: "About", href: "/#about" },
+    { name: "Skills", href: "/#skills" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -64,23 +64,26 @@ const Navbar = () => {
               <Link
                 href={item.href}
                 className={`text-sm font-medium transition-all duration-300 relative group ${
-                  activeSection === item.href.substring(1)
+                  activeSection === item.href.substring(2)
                     ? "text-primary"
                     : "text-gray-300 hover:text-white"
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === item.href.substring(1) ? "w-full" : "w-0 group-hover:w-full"}`}></span>
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === item.href.substring(2) ? "w-full" : "w-0 group-hover:w-full"}`}></span>
               </Link>
             </li>
           ))}
-          <motion.button
+          <motion.a
+            href="https://drive.google.com/file/d/1NLzhiTPr11s6kqcTqQy4inAT-0C_NCTG/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-5 py-2 bg-primary/10 border border-primary/20 text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-sm font-medium"
+            className="px-5 py-2 bg-primary/10 border border-primary/20 text-primary rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-sm font-medium cursor-pointer"
           >
             Resume
-          </motion.button>
+          </motion.a>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -115,9 +118,14 @@ const Navbar = () => {
                 </li>
               ))}
               <li>
-                <button className="px-6 py-2 bg-gradient-to-r from-primary to-accent rounded-full text-white font-medium shadow-lg shadow-primary/20">
+                <a
+                  href="https://drive.google.com/file/d/1NLzhiTPr11s6kqcTqQy4inAT-0C_NCTG/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 bg-gradient-to-r from-primary to-accent rounded-full text-white font-medium shadow-lg shadow-primary/20 block text-center"
+                >
                   Resume
-                </button>
+                </a>
               </li>
             </ul>
           </motion.div>

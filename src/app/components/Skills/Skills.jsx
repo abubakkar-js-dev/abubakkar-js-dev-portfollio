@@ -75,13 +75,13 @@ const Skills = () => {
                   <motion.div
                     key={skill.name}
                     variants={itemVariants}
-                    className="flex flex-col items-center justify-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-300 group"
-                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 group"
+                    whileHover={{ scale: 1.02, x: 5 }}
                   >
-                    <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-2xl transform group-hover:scale-110 transition-transform duration-300">
                       {skill.icon}
                     </div>
-                    <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors text-center">
+                    <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
                       {skill.name}
                     </span>
                   </motion.div>
