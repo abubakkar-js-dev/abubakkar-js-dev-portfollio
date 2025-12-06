@@ -29,7 +29,7 @@ export default function Home() {
         {/* skills */}
         <Skills />
         {/* Experience */}
-        <Experience />
+        {/* <Experience /> */}
         {/* projects */}
         <Projects />
         {/* Testimonials */}

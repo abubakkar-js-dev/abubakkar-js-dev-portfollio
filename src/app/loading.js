@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const loading = () => {
   return (
-    <div className="flex items-center justify-center h-screen bg-[#0a192f]">
+    <div className="flex items-center justify-center h-screen bg-[#0f172a]">
       <motion.div
         className="relative w-16 h-16 border-4 border-green-400 border-t-transparent rounded-full animate-spin"
         initial={{ opacity: 0, scale: 0.8 }}
