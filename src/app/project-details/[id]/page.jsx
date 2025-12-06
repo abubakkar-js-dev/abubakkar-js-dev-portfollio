@@ -3,10 +3,21 @@ import * as motion from "framer-motion/client";
 import Link from 'next/link';
 import { FaArrowLeft, FaGithub, FaGlobe, FaLayerGroup, FaLightbulb, FaRocket, FaTools } from 'react-icons/fa';
 
+import { projectsData } from '@/app/data/projects';
+
 export async function getProject(id) {
-    const res = await fetch(`https://abu-bakkar-js-dev-server.vercel.app/projects/${id}`, { cache: 'no-store' });
-    const data = await res.json();
-    return data;
+    // Check local data first
+    const localProject = projectsData.find(p => p._id === id);
+    if (localProject) return localProject;
+
+    try {
+        const res = await fetch(`https://abu-bakkar-js-dev-server.vercel.app/projects/${id}`, { cache: 'no-store' });
+        if (!res.ok) return null;
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        return null;
+    }
 }
 
 export async function generateMetadata({ params }) {

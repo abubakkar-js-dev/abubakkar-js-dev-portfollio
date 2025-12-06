@@ -1,44 +1,27 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProjectCard from "../ProjectCard/projectCard";
 import SectionTitle from "../shared/SectionTitle";
 
+import { projectsData } from "../../data/projects";
+
 const Projects = () => {
-    const [projects, setProjects] = useState([]);
-    const [filteredProjects, setFilteredProjects] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // eslint-disable-next-line no-unused-vars
+    const [projects, setProjects] = useState(projectsData);
+    const [filteredProjects, setFilteredProjects] = useState(projectsData);
     const [activeFilter, setActiveFilter] = useState("All");
 
-    useEffect(() => {
-      const fetchProjects = async () => {
-        setLoading(true);
-        try {
-          const res = await fetch('https://abu-bakkar-js-dev-server.vercel.app/projects');
-          const data = await res.json();
-          setProjects(data);
-          setFilteredProjects(data);
-        } catch (error) {
-          console.error("Failed to fetch projects:", error);
-        } finally {
-          setLoading(false);
-        }
-      }
-      fetchProjects();
-    }, []);
-
-    const filters = ["All", "React", "Next.js", "MERN", "Frontend"];
+    const filters = ["All", "React", "Next.js", "MERN", "Frontend", "Full Stack"];
 
     const handleFilter = (filter) => {
       setActiveFilter(filter);
       if (filter === "All") {
         setFilteredProjects(projects);
       } else {
-        // Simple filtering logic based on tech stack presence in project description or name
-        // Ideally, the API would return a 'tags' or 'category' array. 
-        // fallback: filtering by string matching if specific fields aren't there.
         setFilteredProjects(projects.filter(p => 
-           JSON.stringify(p).toLowerCase().includes(filter.toLowerCase())
+           JSON.stringify(p).toLowerCase().includes(filter.toLowerCase()) || 
+           (p.category && p.category.includes(filter))
         ));
       }
     };
@@ -66,24 +49,17 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        {loading ? (
-             <div className="flex justify-center mt-20">
-                <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-             </div>
-        ) : (
-            <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                layout
-            >
-                <AnimatePresence>
-                {filteredProjects.map((project, index) => (
-                    <ProjectCard key={project._id} project={project} index={index} />
-                ))}
-                </AnimatePresence>
-            </motion.div>
-        )}
+        <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+            <AnimatePresence>
+            {filteredProjects.map((project, index) => (
+                <ProjectCard key={project._id} project={project} index={index} />
+            ))}
+            </AnimatePresence>
+        </motion.div>
         
-        {filteredProjects.length === 0 && !loading && (
+        {filteredProjects.length === 0 && (
              <p className="text-center text-gray-400 mt-10">No projects found for this category.</p>
         )}
       </div>

@@ -6,10 +6,10 @@ import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 
 const roles = [
-  "Front End Developer",
-  "Aspiring Full Stack Engineer",
-  "React Enthusiast",
-  "MERN Stack Developer",
+  "Frontend Developer",
+  "React & Next.js Specialist",
+  "Full Stack Developer (MERN)",
+  "Problem Solver",
 ];
 
 const Hero = () => {
@@ -63,14 +63,16 @@ const Hero = () => {
           </div>
 
           <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            Passionate about building interactive and modern web applications. 
-            Transforming ideas into seamless digital experiences with code.
+            Motivated Frontend Developer specializing in React.js, Next.js, and TypeScript. 
+            I build responsive, high-performance applications with backend integration expertise 
+            in Node.js and Supabase.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
             <motion.a
-              href="/resume.pdf"
-              download
+              href="https://drive.google.com/file/d/1NLzhiTPr11s6kqcTqQy4inAT-0C_NCTG/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-gradient-to-r from-primary to-accent rounded-full text-white font-semibold shadow-lg shadow-primary/25 flex items-center gap-2"

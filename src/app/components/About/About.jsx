@@ -47,31 +47,30 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-6">
-              Crafting stories through <span className="text-gradient">code and design</span>
+              Turning ideas into <span className="text-gradient">functional, scalable web solutions</span>
             </h3>
             
             <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
                 Hey there! 👋 I’m <span className="text-white font-semibold">Abu Bakkar Siddik</span>, 
-                a passionate <strong>Front-End Developer</strong> and aspiring <strong>Full-Stack Engineer</strong>. 
-                My journey began with curiosity and has evolved into a deep passion for building pixel-perfect, 
-                high-performance web applications.
+                a motivated <strong>Frontend Developer</strong> specializing in <strong>React.js, Next.js, and TypeScript</strong>. 
+                I have a knack for building responsive, accessible, and high-performance applications.
               </p>
               
               <p>
-                I specialize in the <span className="text-primary">MERN stack</span> (MongoDB, Express, React, Node.js) 
-                and Next.js. I thrive on solving complex UI challenges and optimizing performance to deliver 
-                buttery-smooth user experiences.
+                Beyond the frontend, I possess strong backend integration skills with <strong>Node.js, Express.js, MongoDB, and Supabase</strong>. 
+                I don't just build interfaces; I build full-stack solutions that connect users to data securely and efficiently. 
+                I am eager to contribute to innovative teams creating user-centric web solutions.
               </p>
 
               <div className="grid grid-cols-2 gap-6 mt-8">
                  <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-primary/30 transition-colors">
-                    <h4 className="font-bold text-white mb-2">Frontend</h4>
-                    <p className="text-sm text-gray-400">React, Next.js, Tailwind</p>
+                    <h4 className="font-bold text-white mb-2">Frontend Specialist</h4>
+                    <p className="text-sm text-gray-400">React, Next.js, TypeScript, Tailwind, shadcn/ui</p>
                  </div>
                  <div className="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-primary/30 transition-colors">
-                    <h4 className="font-bold text-white mb-2">Backend</h4>
-                    <p className="text-sm text-gray-400">Node, Express, MongoDB</p>
+                    <h4 className="font-bold text-white mb-2">Backend Capable</h4>
+                    <p className="text-sm text-gray-400">Node.js, Express, MongoDB, Supabase</p>
                  </div>
               </div>
             </div>

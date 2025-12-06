@@ -6,7 +6,6 @@ import { FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 const ProjectCard = ({ project, index }) => {
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
@@ -41,10 +40,17 @@ const ProjectCard = ({ project, index }) => {
         </p>
 
         {/* Tags (if any, simplifying for now as standard API might not have them perfect) */}
-        {/* <div className="flex flex-wrap gap-2 mb-6">
-            <span className="text-xs px-2 py-1 bg-white/5 rounded text-gray-400">React</span>
-            <span className="text-xs px-2 py-1 bg-white/5 rounded text-gray-400">Node</span>
-        </div> */}
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-6">
+            {project.technologies?.slice(0, 3).map((tech, idx) => (
+                <span key={idx} className="text-xs px-2 py-1 bg-white/5 rounded text-gray-400 border border-white/5">
+                    {tech}
+                </span>
+            ))}
+            {project.technologies?.length > 3 && (
+                <span className="text-xs px-2 py-1 bg-white/5 rounded text-gray-400 border border-white/5">+{project.technologies.length - 3}</span>
+            )}
+        </div>
 
         <div className="flex justify-between items-center pt-4 border-t border-white/5 mt-auto">
           <Link
