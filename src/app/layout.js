@@ -1,6 +1,5 @@
-import { Poppins,Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
 
 
 const poppins = Poppins({
@@ -16,8 +15,12 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: "Portfollio || Abu Bakkar Siddik",
-  description: "A portofollio website with project showcase",
+  title: "Abu Bakkar Siddik | Front-End Developer & UI/UX Enthusiast",
+  description: "Portfolio of Abu Bakkar Siddik, a passionate React Developer building modern, scalable, and interactive web applications.",
+  keywords: ["Front-End Developer", "React Developer", "Next.js", "Portfolio", "Web Development", "UI/UX"],
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
