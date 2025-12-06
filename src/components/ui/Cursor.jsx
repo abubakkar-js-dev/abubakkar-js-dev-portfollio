@@ -50,8 +50,8 @@ const Cursor = () => {
     <>
         {/* Main Dot */}
         <motion.div
-            className="fixed top-0 left-0 w-4 h-4 bg-primary rounded-full pointer-events-none z-[100] mix-blend-difference hidden md:block"
-            animate={{ x: mousePosition.x - 8, y: mousePosition.y - 8 }}
+            className="fixed top-0 left-0 w-2 h-2 hover:w-4 hover:h-4 bg-primary rounded-full pointer-events-none z-[100] mix-blend-difference hidden md:block"
+            animate={{ x: mousePosition.x - 4, y: mousePosition.y - 4 }}
             transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
         />
         {/* Hover Ring */}

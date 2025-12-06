@@ -165,7 +165,7 @@ const Hero = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -right-8 top-20 glass p-3 rounded-xl hidden md:block"
             >
-                <img src="/images/react.png" alt="React" className="w-10 h-10" onError={(e) => e.target.style.display = 'none'} />
+                <img src="/images/react.png" alt="React" className="w-10 h-10 rounded-full" onError={(e) => e.target.style.display = 'none'} />
             </motion.div>
             
             <motion.div 
@@ -173,7 +173,7 @@ const Hero = () => {
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 className="absolute -left-8 bottom-20 glass p-3 rounded-xl hidden md:block"
             >
-                <img src="/images/next.svg" alt="Next.js" className="w-10 h-10 invert" onError={(e) => e.target.style.display = 'none'} />
+                <img src="/images/next.svg" alt="Next.js" className="w-10 h-10 rounded-full bg-white" onError={(e) => e.target.style.display = 'none'} />
             </motion.div>
 
           </div>
