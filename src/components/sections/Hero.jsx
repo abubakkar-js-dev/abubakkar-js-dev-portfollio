@@ -100,7 +100,7 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start mb-12"
+            className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start mb-12 space-y-2 sm:space-y-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
@@ -130,7 +130,7 @@ const Hero = () => {
 
           {/* Social Links */}
           <motion.div 
-            className="flex gap-6 justify-center lg:justify-start"
+            className="flex gap-6 justify-center lg:justify-start pt-12 lg:pt-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
@@ -205,7 +205,7 @@ const Hero = () => {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -right-6 top-16 bg-slate-800/90 backdrop-blur-md border border-cyan-500/30 p-3 rounded-xl shadow-xl shadow-cyan-500/20 hidden lg:block"
             >
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white">
+              <div className="w-12 h-12 rounded-lg bg-[#20232A] flex items-center justify-center text-[#00DAFC]">
                 <FaReact className="text-2xl" />
               </div>
               <p className="text-xs text-gray-400 mt-2 text-center font-medium">React</p>
@@ -229,7 +229,7 @@ const Hero = () => {
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               className="absolute -bottom-6 -right-6 bg-slate-800/90 backdrop-blur-md border border-blue-500/30 p-3 rounded-xl shadow-xl shadow-blue-500/20 hidden lg:block"
             >
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white">
+              <div className="w-12 h-12 rounded-lg bg-[#2D79C7] flex items-center justify-center text-white">
                 <SiTypescript className="text-2xl" />
               </div>
               <p className="text-xs text-gray-400 mt-2 text-center font-medium">TypeScript</p>
@@ -238,11 +238,12 @@ const Hero = () => {
           </div>
         </motion.div>
 
-      </div>
 
+
+      </div>
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:block"
+        className="absolute bottom-8  transform -translate-x-1/2 pb-8 lg:pb-0"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
@@ -262,6 +263,7 @@ const Hero = () => {
           </div>
         </motion.div>
       </motion.div>
+
 
     </section>
   );

@@ -320,11 +320,11 @@ const SkillSphere = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center relative">
+    <div className="flex flex-col items-center justify-center relative">
       <div 
         ref={containerRef} 
-        className="w-full h-full"
-        style={{ minHeight: '300px' }}
+        className="mx-auto"
+        style={{ width: '400px', height: '400px' }}
       />
       
       {/* Hover tooltip */}

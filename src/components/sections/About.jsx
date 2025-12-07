@@ -12,14 +12,10 @@ const SkillSphere = dynamic(() => import("../canvas/SkillSphere"), {
 });
 
 const SkillSpherePlaceholder = () => (
-  <div className="w-full h-full flex items-center justify-center">
-    <div className="flex items-center justify-center w-[380px] h-[380px]">
-      <div className="flex items-center justify-center ">
-        <ErrorBoundary errorMessage="Failed to load 3D skill sphere">
-          <SkillSphere />
-        </ErrorBoundary>
-      </div>
-    </div>
+  <div className="min-h-[450px] flex items-center justify-center">
+    <ErrorBoundary errorMessage="Failed to load 3D skill sphere">
+      <SkillSphere />
+    </ErrorBoundary>
   </div>
 );
 
@@ -160,11 +156,9 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               className="bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ minHeight: '450px' }}
+              style={{ height: '450px' }}
             >
-              <div className="w-full h-full">
-                <SkillSpherePlaceholder />
-              </div>
+              <SkillSpherePlaceholder />
             </motion.div>
 
           </div>
