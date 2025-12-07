@@ -1,8 +1,9 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { HiDownload, HiArrowRight } from "react-icons/hi";
+import { FaFacebook, FaGithub, FaLinkedin, FaReact, FaTwitter } from "react-icons/fa";
+import { HiArrowRight, HiDownload } from "react-icons/hi";
+import { SiNextdotjs, SiTypescript } from "react-icons/si";
 
 const roles = [
   "Modern Frontend Experiences",
@@ -26,7 +27,7 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
     >
-      <div className="container mx-auto px-6 h-full flex flex-col-reverse lg:flex-row items-center justify-between gap-16 z-10">
+      <div className="container mx-auto px-6 h-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-16 z-10">
         
         {/* Left Content */}
         <motion.div
@@ -51,7 +52,7 @@ const Hero = () => {
 
           {/* Main Heading */}
           <motion.h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -77,7 +78,7 @@ const Hero = () => {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -40, opacity: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-medium"
+                className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 font-medium"
               >
                 I build <span className="text-teal-400 font-semibold">{roles[roleIndex]}</span>
               </motion.div>
@@ -86,7 +87,7 @@ const Hero = () => {
 
           {/* Description */}
           <motion.p 
-            className="text-gray-400 text-base md:text-lg lg:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            className="text-gray-400 text-sm md:text-base lg:text-lg xl:text-xl mb-8 lg:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -162,7 +163,7 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <div className="relative w-80 h-80 md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px]">
+          <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[450px] xl:h-[450px]">
             
             {/* Animated gradient background */}
             <motion.div 
@@ -202,23 +203,23 @@ const Hero = () => {
             <motion.div 
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-6 top-16 bg-slate-800/80 backdrop-blur-md border border-slate-700/50 p-4 rounded-xl shadow-xl hidden lg:block"
+              className="absolute -right-6 top-16 bg-slate-800/90 backdrop-blur-md border border-cyan-500/30 p-3 rounded-xl shadow-xl shadow-cyan-500/20 hidden lg:block"
             >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white font-bold text-xl">
-                R
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white">
+                <FaReact className="text-2xl" />
               </div>
-              <p className="text-xs text-gray-400 mt-2 text-center">React</p>
+              <p className="text-xs text-gray-400 mt-2 text-center font-medium">React</p>
             </motion.div>
             
             <motion.div 
               animate={{ y: [0, 15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -left-6 bottom-16 bg-slate-800/80 backdrop-blur-md border border-slate-700/50 p-4 rounded-xl shadow-xl hidden lg:block"
+              className="absolute -left-6 bottom-16 bg-slate-800/90 backdrop-blur-md border border-white/20 p-3 rounded-xl shadow-xl shadow-white/10 hidden lg:block"
             >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-white font-bold text-xl">
-                N
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-900 to-black flex items-center justify-center text-white">
+                <SiNextdotjs className="text-2xl" />
               </div>
-              <p className="text-xs text-gray-400 mt-2 text-center">Next.js</p>
+              <p className="text-xs text-gray-400 mt-2 text-center font-medium">Next.js</p>
             </motion.div>
 
             <motion.div 
@@ -226,12 +227,12 @@ const Hero = () => {
                 rotate: [0, 360],
               }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-6 -right-6 bg-slate-800/80 backdrop-blur-md border border-slate-700/50 p-4 rounded-xl shadow-xl hidden lg:block"
+              className="absolute -bottom-6 -right-6 bg-slate-800/90 backdrop-blur-md border border-blue-500/30 p-3 rounded-xl shadow-xl shadow-blue-500/20 hidden lg:block"
             >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-white font-bold text-xl">
-                T
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white">
+                <SiTypescript className="text-2xl" />
               </div>
-              <p className="text-xs text-gray-400 mt-2 text-center">Three.js</p>
+              <p className="text-xs text-gray-400 mt-2 text-center font-medium">TypeScript</p>
             </motion.div>
 
           </div>

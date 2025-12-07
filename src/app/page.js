@@ -19,9 +19,6 @@ const Contact = dynamic(() => import("@/components/sections/Contact"));
 const Cursor = dynamic(() => import("@/components/ui/Cursor"), {
   ssr: false
 });
-const ScrollProgress = dynamic(() => import("@/components/ui/ScrollProgress"), {
-  ssr: false
-});
 const BackToTop = dynamic(() => import("@/components/ui/BackToTop"), {
   ssr: false
 });
@@ -35,7 +32,6 @@ export default function Home() {
         Skip to main content
       </a>
       
-      <ScrollProgress />
       <Cursor />
       <BackToTop />
       {/* header start */}
