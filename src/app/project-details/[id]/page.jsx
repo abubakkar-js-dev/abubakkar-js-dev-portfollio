@@ -1,10 +1,9 @@
 import Navbar from '@/components/layout/Navbar';
+import { projectsData } from '@/data/projects';
 import * as motion from "framer-motion/client";
 import Image from "next/image";
 import Link from 'next/link';
 import { FaArrowLeft, FaGithub, FaGlobe, FaLayerGroup, FaLightbulb, FaRocket, FaTools } from 'react-icons/fa';
-
-import { projectsData } from '@/data/projects';
 
 export async function getProject(id) {
     // Check local data first

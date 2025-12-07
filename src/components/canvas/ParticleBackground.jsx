@@ -26,8 +26,18 @@ const ParticleBackground = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
+    // Adaptive particle count based on device performance
+    const getParticleCount = () => {
+      const isMobile = window.innerWidth < 768;
+      const isLowEnd = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+      
+      if (isMobile) return 1500;  // Mobile: 1500 particles
+      if (isLowEnd) return 3000;  // Low-end desktop: 3000 particles
+      return 5000;  // High-end desktop: 5000 particles
+    };
+
     // Create particles
-    const particleCount = 5000;
+    const particleCount = getParticleCount();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 

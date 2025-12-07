@@ -42,8 +42,17 @@ const SkillSphere = () => {
     renderer.setClearColor(0x000000, 0);
     containerRef.current.appendChild(renderer.domElement);
 
+    // Adaptive quality based on device performance
+    const isMobile = window.innerWidth < 768;
+    const isLowEnd = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+    
+    const quality = {
+      sphereSegments: isMobile ? 16 : isLowEnd ? 24 : 32,
+      particleCount: isMobile ? 100 : isLowEnd ? 200 : 300,
+    };
+
     // Main wireframe sphere with pulsing effect
-    const sphereGeo = new THREE.SphereGeometry(2.2, 32, 32);
+    const sphereGeo = new THREE.SphereGeometry(2.2, quality.sphereSegments, quality.sphereSegments);
     const sphereMat = new THREE.MeshBasicMaterial({
       color: 0x14b8a6,
       wireframe: true,
@@ -54,7 +63,7 @@ const SkillSphere = () => {
     scene.add(sphere);
 
     // Add inner glow sphere
-    const glowGeo = new THREE.SphereGeometry(2.15, 32, 32);
+    const glowGeo = new THREE.SphereGeometry(2.15, quality.sphereSegments, quality.sphereSegments);
     const glowMat = new THREE.MeshBasicMaterial({
       color: 0x14b8a6,
       transparent: true,
@@ -65,7 +74,7 @@ const SkillSphere = () => {
     scene.add(glowSphere);
 
     // Particles for extra visual effect
-    const particleCount = 300;
+    const particleCount = quality.particleCount;
     const particleGeo = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
 

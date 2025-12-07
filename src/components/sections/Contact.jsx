@@ -1,18 +1,18 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { 
-  FaEnvelope, 
-  FaGithub, 
-  FaLinkedin, 
-  FaMapMarkerAlt, 
-  FaPaperPlane, 
-  FaPhone, 
-  FaWhatsapp,
-  FaTwitter,
-  FaFacebook,
-  FaCheckCircle,
-  FaSpinner
+import {
+    FaCheckCircle,
+    FaEnvelope,
+    FaFacebook,
+    FaGithub,
+    FaLinkedin,
+    FaMapMarkerAlt,
+    FaPaperPlane,
+    FaPhone,
+    FaSpinner,
+    FaTwitter,
+    FaWhatsapp
 } from "react-icons/fa";
 
 const Contact = () => {

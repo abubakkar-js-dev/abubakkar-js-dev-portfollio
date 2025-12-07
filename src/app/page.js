@@ -1,13 +1,24 @@
+"use client";
+import dynamic from "next/dynamic";
+
+// Layout Components
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
-import Experience from "@/components/sections/Experience";
+
+// Above-the-fold sections (loaded immediately)
 import Hero from "@/components/sections/Hero";
-import Projects from "@/components/sections/Projects";
-import Skills from "@/components/sections/Skills";
-import Testimonials from "@/components/sections/Testimonials";
-import Cursor from "@/components/ui/Cursor";
+
+// Below-the-fold sections (lazy loaded)
+const About = dynamic(() => import("@/components/sections/About"));
+const Skills = dynamic(() => import("@/components/sections/Skills"));
+const Projects = dynamic(() => import("@/components/sections/Projects"));
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
+const Contact = dynamic(() => import("@/components/sections/Contact"));
+
+// UI Components (Dynamic - Client-side only)
+const Cursor = dynamic(() => import("@/components/ui/Cursor"), {
+  ssr: false
+});
 
 
 export default function Home() {
@@ -24,19 +35,11 @@ export default function Home() {
       {/* header end*/}
       {/* main start */}
       <main>
-        {/* About Me */}
         <About />
-        {/* skills */}
         <Skills />
-        {/* Experience */}
-        {/* <Experience /> */}
-        {/* projects */}
         <Projects />
-        {/* Testimonials */}
         <Testimonials />
-        {/* Contact */}
         <Contact />
-        {/* Footer */}
         <Footer />
       </main>
       {/* main end */}

@@ -1,14 +1,23 @@
 "use client";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { FaCode, FaCoffee, FaLaptopCode, FaRocket } from "react-icons/fa";
-import SkillSphere from "../canvas/SkillSphere";
+import SkillSphereSkeleton from "../canvas/SkillSphereSkeleton";
+import ErrorBoundary from "../shared/ErrorBoundary";
 
+// Dynamic import for SkillSphere (3D component) - improves initial load
+const SkillSphere = dynamic(() => import("../canvas/SkillSphere"), {
+  ssr: false,
+  loading: () => <SkillSphereSkeleton />
+});
 
 const SkillSpherePlaceholder = () => (
   <div className="w-full h-full flex items-center justify-center">
-    <div className="flex items-center justify-center w-[380px] h-[380px">
+    <div className="flex items-center justify-center w-[380px] h-[380px]">
       <div className="flex items-center justify-center ">
-        <SkillSphere />
+        <ErrorBoundary errorMessage="Failed to load 3D skill sphere">
+          <SkillSphere />
+        </ErrorBoundary>
       </div>
     </div>
   </div>
