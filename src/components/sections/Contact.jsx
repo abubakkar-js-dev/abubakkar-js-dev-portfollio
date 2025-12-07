@@ -1,4 +1,5 @@
 "use client";
+import { useToast } from "@/components/ui/Toast";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import {
@@ -16,6 +17,7 @@ import {
 } from "react-icons/fa";
 
 const Contact = () => {
+  const toast = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -48,14 +50,20 @@ const Contact = () => {
     const newErrors = validateForm();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      toast.error("Please fill in all required fields");
       return;
     }
 
     setStatus("submitting");
+    
+    // Simulate API call - replace with actual implementation
     await new Promise(resolve => setTimeout(resolve, 2000));
+    
     setStatus("success");
+    toast.success("Message sent successfully! I'll get back to you within 24 hours.");
     setFormData({ name: "", email: "", subject: "", message: "" });
-    setTimeout(() => setStatus("idle"), 5000);
+    
+    setTimeout(() => setStatus("idle"), 3000);
   };
 
   const contactInfo = [

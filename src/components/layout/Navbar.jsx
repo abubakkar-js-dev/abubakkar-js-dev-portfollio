@@ -14,6 +14,13 @@ const Navbar = () => {
       setScrolled(window.scrollY > 50);
     };
 
+    // Keyboard navigation: Escape to close mobile menu
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -28,12 +35,14 @@ const Navbar = () => {
 
     sections.forEach((section) => observer.observe(section));
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("keydown", handleKeyDown);
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, []);
+  }, [isOpen]);
 
   const navLinks = [
     { name: "Home", href: "#home" },
@@ -69,9 +78,10 @@ const Navbar = () => {
           <motion.a
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
-            className="group relative"
+            className="group relative focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Home - Abu Bakkar Portfolio"
           >
             <h2 className="text-2xl font-bold relative z-10">
               Bakka
@@ -93,9 +103,11 @@ const Navbar = () => {
                     <a
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
-                      className={`relative text-sm font-medium transition-colors duration-300 group ${
+                      className={`relative text-sm font-medium transition-colors duration-300 group focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 focus:ring-offset-slate-900 rounded px-2 py-1 ${
                         isActive ? "text-teal-400" : "text-gray-300 hover:text-white"
                       }`}
+                      aria-label={`Navigate to ${item.name} section`}
+                      aria-current={isActive ? "page" : undefined}
                     >
                       {item.name}
                       <span
@@ -140,7 +152,8 @@ const Navbar = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative px-5 py-2.5 bg-gradient-to-r from-teal-400 to-cyan-500 text-slate-900 rounded-full font-semibold text-sm overflow-hidden group"
+              className="relative px-5 py-2.5 bg-gradient-to-r from-teal-400 to-cyan-500 text-slate-900 rounded-full font-semibold text-sm overflow-hidden group focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+              aria-label="Download Resume (opens in new tab)"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <FiDownload className="group-hover:animate-bounce" />
@@ -153,8 +166,10 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-2xl text-white hover:text-teal-400 transition-colors relative z-50"
-            aria-label="Toggle Menu"
+            className="lg:hidden text-2xl text-white hover:text-teal-400 transition-colors relative z-50 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-lg p-2"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
             whileTap={{ scale: 0.9 }}
           >
             <AnimatePresence mode="wait">
@@ -199,6 +214,9 @@ const Navbar = () => {
 
             {/* Menu Panel */}
             <motion.div
+              id="mobile-menu"
+              role="dialog"
+              aria-label="Mobile navigation menu"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}

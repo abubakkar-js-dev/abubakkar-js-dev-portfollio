@@ -19,12 +19,25 @@ const Contact = dynamic(() => import("@/components/sections/Contact"));
 const Cursor = dynamic(() => import("@/components/ui/Cursor"), {
   ssr: false
 });
+const ScrollProgress = dynamic(() => import("@/components/ui/ScrollProgress"), {
+  ssr: false
+});
+const BackToTop = dynamic(() => import("@/components/ui/BackToTop"), {
+  ssr: false
+});
 
 
 export default function Home() {
   return (
     <div>
+      {/* Skip to content link for accessibility */}
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
+      
+      <ScrollProgress />
       <Cursor />
+      <BackToTop />
       {/* header start */}
       <header>
         {/* Navbar */}
@@ -34,7 +47,7 @@ export default function Home() {
       </header>
       {/* header end*/}
       {/* main start */}
-      <main>
+      <main id="main-content" tabIndex="-1">
         <About />
         <Skills />
         <Projects />

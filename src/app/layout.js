@@ -1,3 +1,4 @@
+import { ToastProvider } from "@/components/ui/Toast";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -46,7 +47,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${poppins.variable} antialiased`}>
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
       </body>
     </html>
   );
