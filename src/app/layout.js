@@ -16,12 +16,12 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: "Abu Bakkar Siddik | Front-End Developer & UI/UX Enthusiast",
-  description: "Portfolio of Abu Bakkar Siddik, a passionate React Developer building modern, scalable, and interactive web applications.",
-  keywords: ["Front-End Developer", "React Developer", "Next.js", "Portfolio", "Web Development", "UI/UX"],
+  title: "Abu Bakkar Siddik | Full Stack Developer & UI/UX Enthusiast",
+  description: "Portfolio of Abu Bakkar Siddik, a passionate Full Stack Developer building modern, scalable, and interactive web applications.",
+  keywords: ["Full Stack Developer", "React Developer", "Next.js","Node.js", "Portfolio", "Web Development", "UI/UX"],
 
   openGraph: {
-    title: "Abu Bakkar Siddik | Front-End Developer",
+    title: "Abu Bakkar Siddik | Full Stack Developer",
     description: "Building modern web experiences with React, Next.js, and Tailwind CSS.",
     url: "https://abubakkar-portfolio.vercel.app",
     siteName: "Abu Bakkar Portfolio",
@@ -37,7 +37,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abu Bakkar Siddik | Front-End Developer",
+    title: "Abu Bakkar Siddik | Full Stack Developer",
     description: "Building modern web experiences with React, Next.js, and Tailwind CSS.",
     images: ["/images/profile.jpg"],
   },
