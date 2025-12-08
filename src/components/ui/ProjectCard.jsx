@@ -1,11 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { FaArrowRight, FaExternalLinkAlt, FaGithub, FaPlay } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const ProjectCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef(null);
+  const router = useRouter();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -68,9 +71,9 @@ const ProjectCard = ({ project, index }) => {
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="flex gap-4">
-            <motion.a
-              href={`/project-details/${project._id}`}
+          <div className="flex justify-center items-center gap-4">
+            <motion.button
+              onClick={() => router.push(`/project-details/${project._id}`)}
               className="px-6 py-3 bg-gradient-to-r from-teal-400 to-cyan-500 text-slate-900 rounded-full font-bold flex items-center gap-2 hover:shadow-lg hover:shadow-teal-400/50 transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -79,7 +82,7 @@ const ProjectCard = ({ project, index }) => {
               transition={{ delay: 0.1 }}
             >
               View Details <FaArrowRight size={14} />
-            </motion.a>
+            </motion.button>
             
             {project.liveLink && (
               <motion.a
@@ -163,7 +166,7 @@ const ProjectCard = ({ project, index }) => {
 
         {/* Footer */}
         <div className="flex justify-between items-center pt-4 border-t border-slate-800 mt-auto">
-          <a
+          <Link
             href={`/project-details/${project._id}`}
             className="text-sm font-semibold text-teal-400 hover:text-teal-300 transition-colors flex items-center gap-2 group/link"
           >
@@ -172,7 +175,7 @@ const ProjectCard = ({ project, index }) => {
               size={12} 
               className="group-hover/link:translate-x-1 transition-transform" 
             />
-          </a>
+          </Link>
           
           <div className="flex gap-3">
             {project.githubLink && (
