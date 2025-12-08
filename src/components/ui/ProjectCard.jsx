@@ -69,7 +69,7 @@ const ProjectCard = ({ project, index }) => {
           className="absolute inset-0 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.1 }}
         >
           <div className="flex justify-center items-center gap-4">
             <motion.button
@@ -79,7 +79,7 @@ const ProjectCard = ({ project, index }) => {
               whileTap={{ scale: 0.95 }}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
-              transition={{ delay: 0.1 }}
+              transition={{ delay: 0.01 }}
             >
               View Details <FaArrowRight size={14} />
             </motion.button>
@@ -94,7 +94,7 @@ const ProjectCard = ({ project, index }) => {
                 whileTap={{ scale: 0.9 }}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
-                transition={{ delay: 0.15 }}
+                transition={{ delay: 0.02 }}
                 title="Live Demo"
               >
                 <FaExternalLinkAlt size={16} />

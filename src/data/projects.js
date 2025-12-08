@@ -8,7 +8,7 @@ export const projectsData = [
     ],
     imageUrl: "/images/do-earn.png",
     liveLink: "https://do-and-earn-9b707.web.app/",
-    githubLink: "#",
+    githubLink: "https://github.com/abubakkar-js-dev/do-and-earn-client",
     category: "Full Stack",
     credentials: {
       username: "johndoe@gmail.com",
@@ -52,8 +52,8 @@ export const projectsData = [
       "React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Firebase Auth", "JWT"
     ],
     imageUrl: "/images/task-bros.png",
-    liveLink: "#",
-    githubLink: "#",
+    liveLink: "https://taskbros12.web.app/",
+    githubLink: "https://github.com/abubakkar-js-dev/TaskBros-client",
     category: "Web App",
     features: [
       {
@@ -89,8 +89,8 @@ export const projectsData = [
       "React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Firebase Auth", "Firebase Hosting"
     ],
     imageUrl: "/images/cinenest.png",
-    liveLink: "#",
-    githubLink: "#",
+    liveLink: "https://cinenest32.web.app/",
+    githubLink: "https://github.com/abubakkar-js-dev/cineNest-client",
     category: "Frontend",
     features: [
       {

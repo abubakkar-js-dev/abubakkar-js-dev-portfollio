@@ -138,7 +138,7 @@ const Hero = () => {
             {[
               { icon: <FaGithub />, href: "https://github.com/abubakkar-js-dev", label: "GitHub" },
               { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/md-abu-bakkar-siddik-024a72269/", label: "LinkedIn" },
-              { icon: <FaTwitter />, href: "https://x.com/bakkar_md44657", label: "Twitter" },
+              { icon: <FaTwitter />, href: "https://x.com/MrBakka244179", label: "Twitter" },
               { icon: <FaFacebook />, href: "https://www.facebook.com/fabsc2021/", label: "Facebook" },
             ].map((social, i) => (
               <motion.a

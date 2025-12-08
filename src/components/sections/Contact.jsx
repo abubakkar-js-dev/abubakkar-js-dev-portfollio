@@ -100,7 +100,7 @@ const Contact = () => {
   const socialLinks = [
     { icon: <FaGithub />, href: "https://github.com/abubakkar-js-dev", label: "GitHub", color: "hover:text-white" },
     { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/md-abu-bakkar-siddik-024a72269/", label: "LinkedIn", color: "hover:text-blue-400" },
-    { icon: <FaTwitter />, href: "https://x.com/bakkar_md44657", label: "Twitter", color: "hover:text-sky-400" },
+    { icon: <FaTwitter />, href: "https://x.com/MrBakka244179", label: "Twitter", color: "hover:text-sky-400" },
     { icon: <FaFacebook />, href: "https://www.facebook.com/fabsc2021/", label: "Facebook", color: "hover:text-blue-500" },
   ];
 
@@ -212,7 +212,7 @@ const Contact = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-gray-400 ${social.color} hover:border-teal-400/50 transition-all`}
+                      className={`w-12 h-12 rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-gray-400 ${social.color} hover:border-teal-400/50 transition-all duration-100`}
                       whileHover={{ y: -3, scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       aria-label={social.label}
